@@ -1,3 +1,5 @@
+const path = require('path');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'export',
@@ -10,6 +12,10 @@ const nextConfig = {
 
     // Optional: Change the output directory `out` -> `dist`
     // distDir: 'dist',
+
+    sassOptions: {
+        includePaths: [path.join(__dirname, 'styles')],
+    },
 }
 
 module.exports = nextConfig
