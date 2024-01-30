@@ -1,0 +1,36 @@
+.header {
+    // --header-height: 6.8rem;
+    z-index: 100;
+    width: 100%;
+    background-color: transparent;
+    position: absolute;
+    top: 0.8rem;
+    left: 0;
+    
+    .wrapper {
+        display: flex;
+        justify-content: center;
+
+        .navbar {
+            
+            ul {
+                display: flex;
+
+                li {
+                    display: block;
+
+                    a {
+                        color: white;
+                    }
+
+                    .current {
+
+                        a {
+                            color: var(--lineColor);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
