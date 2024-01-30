@@ -1,11 +1,10 @@
 
-
-const BlogLayout = ({ children }) => {
+const BlogLayout = () => {
     return (
         <div>
             Blog Layout
             <div>
-                { children }
+                test
             </div>
         </div>
     )
