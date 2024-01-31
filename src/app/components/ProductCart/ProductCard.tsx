@@ -1,14 +1,13 @@
 import React from 'react';
 import AddToCart from './AddToCart';
 
-
-const ProductCart = () => {
+const ProductCard = () => {
     return (
-        <div>
+        <div className='p-5 my-5'>
             <h1>Product Card</h1>
             <AddToCart />
         </div>
     )
 }
 
-export default ProductCart;
+export default ProductCard;

@@ -1,13 +1,18 @@
+import React, { ReactNode } from 'react';
 
-const BlogLayout = () => {
+interface BlogLayoutProps {
+    children: ReactNode;
+}
+
+const BlogLayout: React.FC<BlogLayoutProps> = ({ children }) => {
     return (
         <div>
-            Blog Layout
+            <h2>Blog Layout</h2>
             <div>
-                test
+                { children }
             </div>
         </div>
-    )
+    );
 }
 
 export default BlogLayout;

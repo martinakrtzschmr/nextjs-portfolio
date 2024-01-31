@@ -1,9 +1,9 @@
-
-
-const Blog = () => {
+const BlogLayout: React.FC = () => {
     return (
-        <h1>Blog Page</h1>
+        <div>
+            <h1>Blog Page</h1>
+        </div>
     );
 }
 
-export default Blog;
+export default BlogLayout;

@@ -1,8 +1,6 @@
-
-
 const Post = () => {
     return (
-        <h1>Post Page</h1>
+        <h3>Post Page</h3>
     );
 }
 

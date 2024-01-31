@@ -1,28 +1,25 @@
+import Link from 'next/link';
 import React from 'react';
-import styles from '@/styles/header/header.module.scss';
 
 const Header = () => {
   // Component logic goes here
 
   return (
-    <header className={styles.header}>
-      <div className={styles.wrapper}>
-        <nav className={styles.navbar}>
+    <header>
+      <div className='p-1'>
+        <nav>
           <ul>
             <li>
-              <a>Home</a>
+              <Link href="/admin/users">Users</Link>
             </li>
             <li>
-              <a>About</a>
+              <Link href="/about">About</Link>
             </li>
             <li>
-              <a>Resume</a>
+              <Link href="/blog">Blog</Link>
             </li>
             <li>
-              <a>Works</a>
-            </li>
-            <li>
-              <a>Contact me</a>
+              <Link href="/contact">Contact me</Link>
             </li>
           </ul>
         </nav>
