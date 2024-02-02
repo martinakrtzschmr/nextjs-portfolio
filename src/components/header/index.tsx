@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import React from 'react';
+import React from 'react'
+import Link from 'next/link'
 
 const Header = () => {
   // Component logic goes here
@@ -28,4 +28,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Header

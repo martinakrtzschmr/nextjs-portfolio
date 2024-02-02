@@ -1,9 +1,10 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from 'react'
 
 interface BlogLayoutProps {
     children: ReactNode;
 }
 
+// { children }:{children:React.ReactNode}
 const BlogLayout: React.FC<BlogLayoutProps> = ({ children }) => {
     return (
         <div>
@@ -15,4 +16,4 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({ children }) => {
     );
 }
 
-export default BlogLayout;
+export default BlogLayout

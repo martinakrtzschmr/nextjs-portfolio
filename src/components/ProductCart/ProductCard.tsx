@@ -1,5 +1,5 @@
-import React from 'react';
-import AddToCart from './AddToCart';
+import React from 'react'
+import AddToCart from './AddToCart'
 
 const ProductCard = () => {
     return (
@@ -10,4 +10,4 @@ const ProductCard = () => {
     )
 }
 
-export default ProductCard;
+export default ProductCard

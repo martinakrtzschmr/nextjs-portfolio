@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 interface User {
   id: number;
@@ -36,4 +36,4 @@ const Users = async () => {
   );
 };
 
-export default Users;
+export default Users

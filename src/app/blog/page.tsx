@@ -1,3 +1,5 @@
+import React from 'react'
+
 const BlogLayout: React.FC = () => {
     return (
         <div>
@@ -6,4 +8,4 @@ const BlogLayout: React.FC = () => {
     );
 }
 
-export default BlogLayout;
+export default BlogLayout

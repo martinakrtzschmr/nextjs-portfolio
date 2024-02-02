@@ -1,5 +1,5 @@
-import React from 'react';
-import ProductCard from './components/ProductCart/ProductCard';
+import React from 'react'
+import ProductCard from '@/components/ProductCart/ProductCard'
 
 export default function Home() {
   return (

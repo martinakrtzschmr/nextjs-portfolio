@@ -1,7 +1,11 @@
-const Post = () => {
+import React from 'react'
+
+const PostPage: React.FC = () => {
     return (
-        <h3>Post Page</h3>
+        <div>
+            <h1>Post Page</h1>
+        </div>
     );
 }
 
-export default Post;
+export default PostPage
