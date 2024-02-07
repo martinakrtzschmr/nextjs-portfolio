@@ -1,5 +1,5 @@
-'use client'
-import React from 'react'
+'use client';
+import React from 'react';
 
 const AddToCart = () => {
   return (
@@ -9,4 +9,4 @@ const AddToCart = () => {
   );
 };
 
-export default AddToCart
+export default AddToCart;

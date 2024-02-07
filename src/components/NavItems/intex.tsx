@@ -1,6 +1,6 @@
 'use client';
+import React, { useState } from 'react';
 import { NAVBAR_LINKS } from '@/config';
-import { useState } from 'react';
 import NavItem from './NavItem';
 
 const NavItems = () => {
@@ -13,7 +13,7 @@ const NavItems = () => {
         const handleOpen = () => {
           if (activeIndex === i) {
             setActiveIndex(null);
-          } else {
+          } else {  
             setActiveIndex(i);
           }
         };
