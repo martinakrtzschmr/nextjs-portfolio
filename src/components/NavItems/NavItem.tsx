@@ -2,7 +2,7 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { ChevronDown } from 'lucide-react';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { Button } from '../ui/button';
 import type { NAVBAR_LINKS } from '@/config';
 
