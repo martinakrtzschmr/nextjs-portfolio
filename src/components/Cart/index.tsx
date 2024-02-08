@@ -2,6 +2,7 @@
 
 import { formatPrice } from '@/lib/utils';
 import { ShoppingCart } from 'lucide-react';
+// import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { buttonVariants } from '../ui/button';
@@ -63,9 +64,12 @@ const Cart = () => {
 
               <SheetFooter>
                 <SheetTrigger asChild>
-                  <Link href='/cart' className={buttonVariants({
-                    className: 'w-full'
-                  })}>
+                  <Link
+                    href="/cart"
+                    className={buttonVariants({
+                      className: 'w-full',
+                    })}
+                  >
                     Continue to Checkout
                   </Link>
                 </SheetTrigger>
@@ -73,7 +77,21 @@ const Cart = () => {
             </div>
           </>
         ) : (
-          <div>No Cart</div>
+          <div className="flex h-full flex-col items-center justify-center space-y-1">
+            <div className="relative mb-4 h-60 w-60 text-muted-foreground">
+              {/* <Image src={} fill alt='' /> */}
+            </div>
+            <div className="text-xl font-semibold">Your cart is empty</div>
+            <SheetTrigger asChild>
+              <Link href='/products' className={buttonVariants({
+                variant: 'link',
+                size: 'sm',
+                className: 'text-sm text-muted-foreground'
+              })}>
+                Add items to your cart
+              </Link>
+            </SheetTrigger>
+          </div>
         )}
       </SheetContent>
     </Sheet>
