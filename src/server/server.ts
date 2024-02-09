@@ -1,20 +1,12 @@
 import express from 'express';
+import type { NextFunction, Request, Response } from 'express';
 import { nextApp, nextHandler } from '../lib/next-utils';
-// import * as trpcExpress from '@trpc/server/adapters/express';
 import { getPayloadClient } from './get-payload';
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
 
-// const createContext = ({
-//   req,
-//   res,
-// }: trpcExpress.CreateExpressContextOptions) => ({
-//   req,
-//   res,
-// });
-
-const start = async () => {
+const start = async (): Promise<void> => {
   const payload = await getPayloadClient({
     initOptions: {
       express: app,
@@ -24,15 +16,20 @@ const start = async () => {
     },
   });
 
-  // TODO: Typescript needed for Promise
-  // eslint-disable-next-line @typescript-eslint/no-misused-promises
-  app.use(async (req, res) => nextHandler(req, res));
+  // Following code is unfriendly to typescript. Following erros occur:
+  // @typescript-eslint/no-misused-promises
+  // @typescript-eslint/no-floating-promises
+  /* eslint-disable */
+  app.use(async (req: Request, res: Response, next: NextFunction) => {
+      nextHandler(req, res);
+      next();
+    }
+  );
 
-  // eslint-disable-next-line @typescript-eslint/no-floating-promises
   nextApp.prepare().then(() => {
     payload.logger.info('Next.js started');
 
-    app.listen(PORT, async () => {
+    app.listen(PORT, async (): Promise<void> => {
       payload.logger.info(
         `Next.js App URL: ${process.env.NEXT_PUBLIC_SERVER_URL}`
       );
@@ -41,3 +38,4 @@ const start = async () => {
 };
 
 start();
+/* eslint-enable */
