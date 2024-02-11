@@ -5,6 +5,7 @@ import Header from '@/components/header';
 import Footer from '@/components/footer';
 
 import './globals.css';
+import Providers from '@/components/Providers';
 
 // const inter = Inter({ subsets: ['latin'] });
 
@@ -25,9 +26,11 @@ export default function RootLayout({
     <html lang="en" className="h-full">
       <body className="relative h-full font-sans antialiased">
         <main className="relactive flex flex-col min-h-screen">
-          <Header />
-          <div className="flex-grow flex-1">{children}</div>
-          <Footer />
+          <Providers>
+            <Header />
+            <div className="flex-grow flex-1">{children}</div>
+            <Footer />
+          </Providers>
         </main>
       </body>
     </html>
