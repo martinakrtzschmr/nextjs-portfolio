@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "cross-env PAYLOAD_CONFIG_PATH=src/lib/payload.config.ts nodemon",
     "start": "next start",
     "lint": "next lint",
     "local": "cross-env PAYLOAD_CONFIG_PATH=src/lib/payload.config.ts nodemon"
