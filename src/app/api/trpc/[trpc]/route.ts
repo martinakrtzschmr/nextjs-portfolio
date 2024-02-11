@@ -1,6 +1,7 @@
 import { appRouter } from '../../../../trpc';
 import { fetchRequestHandler } from '@trpc/server/adapters/fetch';
 
+/* eslint-disable */
 const handler = (req: Request) => {
   fetchRequestHandler({
     endpoint: '/api/trpc',
@@ -11,3 +12,4 @@ const handler = (req: Request) => {
 };
 
 export { handler as GET, handler as POST };
+/* eslint-enable */

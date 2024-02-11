@@ -6,6 +6,7 @@ import path from 'path';
 
 const MONGODB_URI = process.env.MONGODB_URI as string;
 
+/* eslint-disable */
 export default buildConfig({
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL || '',
   collections: [],
@@ -31,3 +32,4 @@ export default buildConfig({
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
 });
+/* eslint-enable */

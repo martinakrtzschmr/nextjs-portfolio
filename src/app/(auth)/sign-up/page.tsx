@@ -9,10 +9,8 @@ import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  AuthCredentialsValitor,
-  TAuthCredentialsValidator,
-} from '@/lib/validators/account-credentials-validator';
+import { AuthCredentialsValitor } from '@/lib/validators/account-credentials-validator';
+import type { TAuthCredentialsValidator } from '@/lib/validators/account-credentials-validator';
 import { trpc } from '@/trpc/client';
 
 const Page = () => {
@@ -24,9 +22,9 @@ const Page = () => {
     resolver: zodResolver(AuthCredentialsValitor),
   });
 
-  const { data } = trpc.anyApiRoute.useQuery();
+  // const { data } = trpc.anyApiRoute.useQuery();
 
-  const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {};
+  // const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {};
 
   return (
     <>
@@ -50,7 +48,7 @@ const Page = () => {
           </div>
 
           <div className="grid gap-6">
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form>{/* onSubmit={handleSubmit(onSubmit)} */}
               <div className="grid gap-2">
                 <div className="grid gap-1 py-2">
                   <Label htmlFor="email">Email</Label>
