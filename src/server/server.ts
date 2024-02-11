@@ -1,12 +1,21 @@
 import express from 'express';
-import type { NextFunction, Request, Response } from 'express';
 import { nextApp, nextHandler } from '../lib/next-utils';
 import { getPayloadClient } from './get-payload';
+import * as trpcExpress from '@trpc/server/adapters/express';
+import { appRouter } from '../trpc';
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
 
-const start = async (): Promise<void> => {
+const createContext = ({
+  req,
+  res,
+}: trpcExpress.CreateExpressContextOptions) => ({
+  req,
+  res,
+});
+
+const start = async () => {
   const payload = await getPayloadClient({
     initOptions: {
       express: app,
@@ -20,16 +29,20 @@ const start = async (): Promise<void> => {
   // @typescript-eslint/no-misused-promises
   // @typescript-eslint/no-floating-promises
   /* eslint-disable */
-  app.use(async (req: Request, res: Response, next: NextFunction) => {
-      nextHandler(req, res);
-      next();
-    }
+  app.use(
+    '/api/trpc',
+    trpcExpress.createExpressMiddleware({
+      router: appRouter,
+      createContext,
+    })
   );
+
+  app.use(async (req, res) => nextHandler(req, res));
 
   nextApp.prepare().then(() => {
     payload.logger.info('Next.js started');
 
-    app.listen(PORT, async (): Promise<void> => {
+    app.listen(PORT, async () => {
       payload.logger.info(
         `Next.js App URL: ${process.env.NEXT_PUBLIC_SERVER_URL}`
       );

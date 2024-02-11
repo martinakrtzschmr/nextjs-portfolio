@@ -4,10 +4,10 @@ import { slateEditor } from '@payloadcms/richtext-slate';
 import { buildConfig } from 'payload/config';
 import path from 'path';
 
-const MONGODB_URI = process.env.MONGODB_URI ?? '';
+const MONGODB_URI = process.env.MONGODB_URI as string;
 
 export default buildConfig({
-  serverURL: process.env.NEXT_PUBLIC_SERVER_URL ?? '',
+  serverURL: process.env.NEXT_PUBLIC_SERVER_URL || '',
   collections: [],
   routes: {
     admin: '/sell',

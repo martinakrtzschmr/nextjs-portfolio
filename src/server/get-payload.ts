@@ -3,6 +3,7 @@ import path from 'path';
 import payload from 'payload';
 import type { InitOptions } from 'payload/config';
 
+/* eslint-disable */
 dotenv.config({
   path: path.resolve(__dirname, '../../.env'),
 });
@@ -32,8 +33,8 @@ export const getPayloadClient = async ({ initOptions }: Args = {}) => {
   if (!cached.promise) {
     cached.promise = payload.init({
       secret: process.env.PAYLOAD_SECRET,
-      local: !!initOptions?.express,
-      ...(initOptions ?? {}),
+      local: initOptions?.express ? false : true,
+      ...(initOptions || {}),
     });
   }
 
@@ -46,3 +47,4 @@ export const getPayloadClient = async ({ initOptions }: Args = {}) => {
 
   return cached.client;
 };
+/* eslint-enable */
