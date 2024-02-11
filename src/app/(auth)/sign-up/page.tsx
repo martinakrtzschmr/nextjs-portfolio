@@ -1,9 +1,30 @@
+'use client'; // TODO: Move use client to parts of the components that TRULY only use client
 import React from 'react';
 import { Icons } from '@/components/icons';
-import { buttonVariants } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { cn } from '@/lib/utils';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  AuthCredentialsValitor,
+  TAuthCredentialsValidator,
+} from '@/lib/validators/account-credentials-validator';
 
 const Page = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<TAuthCredentialsValidator>({
+    resolver: zodResolver(AuthCredentialsValitor),
+  });
+
+  const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {};
+
   return (
     <>
       <div className="container relative flex pt-20 flex-col items-center justify-center lg:px-0">
@@ -14,9 +35,45 @@ const Page = () => {
             <h1 className="text-2xl font-bold">Create an account</h1>
 
             <Link
-              className={buttonVariants({ variant: 'link' })}
+              className={buttonVariants({
+                variant: 'link',
+                className: 'gap-1.5',
+              })}
               href="/sign-in"
-            ></Link>
+            >
+              Sign In
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="grid gap-6">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="grid gap-2">
+                <div className="grid gap-1 py-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                    {...register('email')}
+                    className={cn({
+                      'focus-visible:ring-red-500': errors.email,
+                    })}
+                    placeholder="you@example.com"
+                  />
+                </div>
+
+                <div className="grid gap-1 py-2">
+                  <Label htmlFor="email">Password</Label>
+                  <Input
+                    {...register('password')}
+                    className={cn({
+                      'focus-visible:ring-red-500': errors.password,
+                    })}
+                    placeholder="Password"
+                  />
+                </div>
+
+                <Button>Sign Up</Button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
