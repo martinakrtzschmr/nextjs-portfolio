@@ -22,9 +22,11 @@ const Page = () => {
     resolver: zodResolver(AuthCredentialsValitor),
   });
 
-  // const { data } = trpc.anyApiRoute.useQuery();
+  const { mutate } = trpc.auth.createPayloadUser.useMutation({});
 
-  // const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {};
+  const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {
+    mutate({ email, password });
+  };
 
   return (
     <>
@@ -48,12 +50,13 @@ const Page = () => {
           </div>
 
           <div className="grid gap-6">
-            <form>{/* onSubmit={handleSubmit(onSubmit)} */}
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="grid gap-2">
                 <div className="grid gap-1 py-2">
                   <Label htmlFor="email">Email</Label>
                   <Input
                     {...register('email')}
+                    type='emailnpm '
                     className={cn({
                       'focus-visible:ring-red-500': errors.email,
                     })}
@@ -65,6 +68,7 @@ const Page = () => {
                   <Label htmlFor="email">Password</Label>
                   <Input
                     {...register('password')}
+                    type='password'
                     className={cn({
                       'focus-visible:ring-red-500': errors.password,
                     })}
